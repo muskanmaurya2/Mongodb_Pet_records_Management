@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Records Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 Pet Records Management System</h1>
+            <p>Manage your pet records with ease</p>
+        </header>
+
+        <!-- Search and Filter Section -->
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by pet name or owner name...">
+                <button id="searchBtn" class="btn btn-search">Search</button>
+                <button id="clearSearchBtn" class="btn btn-secondary">Clear</button>
+            </div>
+            <div class="filter-box">
+                <label for="filterType">Filter by Type:</label>
+                <select id="filterType">
+                    <option value="all">All Pets</option>
+                    <option value="dog">Dogs</option>
+                    <option value="cat">Cats</option>
+                </select>
+            </div>
+            <button id="addPetBtn" class="btn btn-primary">+ Add New Pet</button>
+        </div>
+
+        <!-- Pet Form Modal -->
+        <div id="petModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Add New Pet</h2>
+                <form id="petForm">
+                    <div class="form-group">
+                        <label for="petName">Pet Name *</label>
+                        <input type="text" id="petName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="petType">Pet Type *</label>
+                        <select id="petType" required>
+                            <option value="">Select Type</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="petAge">Age (years) *</label>
+                        <input type="number" id="petAge" min="0" max="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerName">Owner Name *</label>
+                        <input type="text" id="ownerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerPhone">Owner Phone *</label>
+                        <input type="tel" id="ownerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ownerEmail">Owner Email</label>
+                        <input type="email" id="ownerEmail">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Pet</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pet Records Display -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3 id="totalPets">0</h3>
+                <p>Total Pets</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalDogs">0</h3>
+                <p>Dogs</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalCats">0</h3>
+                <p>Cats</p>
+            </div>
+        </div>
+
+        <div id="petsContainer" class="pets-grid">
+            <!-- Pet cards will be dynamically inserted here -->
+        </div>
+
+        <div id="noPetsMessage" class="no-pets" style="display: none;">
+            <p>No pets found. Add your first pet to get started!</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
